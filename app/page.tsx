@@ -43,6 +43,7 @@ export default function Home() {
     }
   return (
     <div>
+      <p>aaaaaa</p>
       <form onSubmit={onSubmitHandler}>
           <input type="text" name="title" value={inputArticle.title} 
                   onChange={(e) => {
