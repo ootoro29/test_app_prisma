@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator zod {
+  provider                         = "zod-prisma-types"
+　　　　output                           = "./generated/zod" // 出力ディレクトリの指定
+  useMultipleFiles                 = true // スキーマを複数ファイルに分割
+  writeBarrelFiles                 = false // バレルファイルの生成を無効化
+  createInputTypes                 = false // 入力タイプの生成を無効化
+  createModelTypes                 = true // モデルタイプの生成を有効化
+  addInputTypeValidation           = true // 入力タイプに対するバリデーションの追加
+  createOptionalDefaultValuesTypes = true // デフォルト値を持つフィールドをオプショナルに
+  createRelationValuesTypes        = true // リレーションフィールドを含むタイプの生成
+  createPartialTypes               = true // 全フィールドをオプショナルにしたパーシャルタイプの生成
+  useDefaultValidators             = false // Zodのデフォルトバリデータの使用を無効化
+}
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String
+}
