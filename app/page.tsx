@@ -45,7 +45,7 @@ export default function Home() {
     }
   return (
     <div>
-      <button onClick={() => signIn("google")}>サインイン</button>
+      <button onClick={() => signIn()}>サインイン</button>
       <button onClick={() => signOut()}>サインアウト</button>
       <p>aaaaaa</p>
       <p>{JSON.stringify(session)}</p>
