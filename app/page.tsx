@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { FormEvent, useEffect, useState } from "react";
+import { signIn,signOut,useSession } from "next-auth/react";
 
 type Article = {
   id:string
@@ -12,6 +13,7 @@ type Article = {
 
 
 export default function Home() {
+  const {data:session,status} = useSession();
   const [articles,setArticles] = useState<Article[]>([]);
     const [inputArticle,setInputArticle] = useState<Article>({id:"0",title:"",content:"",writer:""});
     useEffect(() => {
@@ -43,7 +45,10 @@ export default function Home() {
     }
   return (
     <div>
+      <button onClick={() => signIn("google")}>サインイン</button>
+      <button onClick={() => signOut()}>サインアウト</button>
       <p>aaaaaa</p>
+      <p>{JSON.stringify(session)}</p>
       <form onSubmit={onSubmitHandler}>
           <input type="text" name="title" value={inputArticle.title} 
                   onChange={(e) => {
