@@ -9,7 +9,7 @@ export const NAuth = NextAuth({
         clientId:process.env.AUTH_GOOGLE_ID,
         clientSecret:process.env.AUTH_GOOGLE_SECRET
     })],
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.AUTH_SECRET,
     callbacks: {
         authorized({request,auth}) {
             try {
